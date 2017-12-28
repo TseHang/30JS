@@ -19,6 +19,11 @@ body {
     padding: 5px 1em;
     min-width: 70px;
     border: solid 2px #fff;
+    transition: all .1s ease-in;
+
+    &.playing {
+        border: solid 4px rgba(235, 185, 19, 0.911);
+    }
 
     .keydown {
         font-weight: bold;
