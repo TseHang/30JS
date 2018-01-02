@@ -13,7 +13,6 @@ var update = function update() {
   handSecond.style.transform = 'rotate(' + (-90 + secondDegree) + 'deg)';
   handMin.style.transform = 'rotate(' + (-90 + minDegree) + 'deg)';
   handHour.style.transform = 'rotate(' + (-90 + hourDegree) + 'deg)';
-  console.log(123);
 
   function transformSeconds(seconds) {
     return 360 / 60 * seconds;
