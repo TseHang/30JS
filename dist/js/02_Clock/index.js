@@ -29,7 +29,3 @@ var update = function update() {
 };
 
 window.setInterval(update, 1000);
-
-// console.log(now.getSeconds());
-// console.log(now.getHours());
-// console.log(now.getMinutes());
