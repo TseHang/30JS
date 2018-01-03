@@ -70,12 +70,13 @@ fetch('./data.json').then(function (response) {
   // 8. 分別計算data內每個種類的數量
   // 超強寫法，用 reduce, 寫出 array.uniq 然後'加總'的做法
   var dataAry = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
-  var reduceNum = dataAry.reduce(function (answerObj, item) {
-    if (!answerObj[item]) {
-      answerObj[item] = 0;
+  var reduceNum = dataAry.reduce(function (obj, item) {
+    var answer = obj;
+    if (!answer[item]) {
+      answer[item] = 0;
     }
-    answerObj[item] += 1;
-    return answerObj;
+    answer[item] += 1;
+    return answer;
   }, {});
 
   // 題目：試著將統計people的所有單字拆開，並統計各英文字共出現次數(僅包含英文字)

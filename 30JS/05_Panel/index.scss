@@ -1,0 +1,101 @@
+body {
+    display: block;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    color: #333;
+    font-family: PingFangSC-Regular, sans-serif;
+    background:linear-gradient(to bottom, rgba(233, 237, 238, 0.7), rgba(229, 229, 233, 0)), rgba(214, 226, 237, 0.797);
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.panel {
+    flex: 1 0 auto;
+    text-align: center;
+    transition: flex .3s ease-in;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.5em;
+
+    background-size:cover;
+    background-position:center;
+
+    > a {
+        color: white;
+        text-decoration: none;
+        transition: transform .2s cubic-bezier(0.61,-0.19, 0.7,-0.11);
+
+        &:first-child {
+            transform: translateY(-500%);
+        }
+
+        &:nth-child(2) {
+            font-size: 2em;
+        }
+
+        &:last-child {
+            transform: translateY(500%);
+        }
+    }
+
+    &.open {
+        flex-grow: 5;
+        > a {
+            &:first-child, &:last-child {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &1 {
+        background: linear-gradient(to bottom, rgba(200, 205, 208, 0.7), rgba(255, 255, 255, 0.728)), url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500);
+    }
+
+    &2 {
+        background-image: linear-gradient(to bottom, rgba(220, 222, 221, 0.7), rgba(136, 156, 218, 0.5)), url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500);
+    }
+
+    &3 {
+        background-image: linear-gradient(to bottom, rgba(216, 218, 220, 0.7), rgba(218, 5, 211, 0.5)), url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
+    }
+
+    &4 {
+        background-image: linear-gradient(to bottom, rgba(210, 212, 213, 0.7), rgba(205, 205, 1, 0.5)), url(https://source.unsplash.com/ITjiVXcwVng/1500x1500);
+    }
+
+    &5 {
+        background-image: linear-gradient(to bottom, rgba(232, 232, 232, 0.7), rgba(2, 125, 211, 0.5)), url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .panel {
+        flex-direction: row;
+        align-items: center;
+
+        > a {
+            &:first-child {
+                transform: translateY(0%);
+            }
+    
+            &:last-child {
+                transform: translateY(0%);
+            }
+        }
+    }
+}
