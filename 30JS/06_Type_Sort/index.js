@@ -20,12 +20,15 @@ function typeSort(cities) {
 
   function showMatches(event) {
     // console.log(cities);
-    const matchArray = findMatches(this.value, cities);
-    // const html = matchArray.map((place) => {
-    //   return '';
-    // });
-    suggestions.innerHTML = '';
-    console.log(matchArray);
+    const search = this.value;
+    const matchArray = findMatches(search, cities);
+    const html = matchArray.map((place) => {
+      const regexp = new RegExp(search, 'gi');
+      const cityName = place.city.replace(regexp, `<span class="highlight">${search}</span>`)
+      const stateName = place.state.replace(regexp, `<span class="highlight">${search}</span>`)
+      return `<li>${cityName},  ${stateName}</li>`;
+    }).sort().join('');
+    suggestions.innerHTML = html;
   }
 }
 

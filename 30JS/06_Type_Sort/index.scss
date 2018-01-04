@@ -34,6 +34,12 @@ body {
     }
 }
 
+
+.highlight {
+    background-color: rgb(255, 174, 0);
+    color: white
+}
+
 ul {
     width: 20%;
     padding: 0;
@@ -44,4 +50,19 @@ ul {
 
 li {
     border: solid .5px #e2dddd;
+    text-align: left;
+    font-style: italic;
+    padding: 2px 1em;
+    color: gray;
+    letter-spacing: 2px;
+
+    &:nth-child(even) {
+        transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+        background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+    }
+
+    &:nth-child(odd) {
+        transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+        background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+    }
 }

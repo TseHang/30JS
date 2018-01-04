@@ -23,12 +23,15 @@ function typeSort(cities) {
 
   function showMatches(event) {
     // console.log(cities);
-    var matchArray = findMatches(this.value, cities);
-    // const html = matchArray.map((place) => {
-    //   return '';
-    // });
-    suggestions.innerHTML = '';
-    console.log(matchArray);
+    var search = this.value;
+    var matchArray = findMatches(search, cities);
+    var html = matchArray.map(function (place) {
+      var regexp = new RegExp(search, 'gi');
+      var cityName = place.city.replace(regexp, '<span class="highlight">' + search + '</span>');
+      var stateName = place.state.replace(regexp, '<span class="highlight">' + search + '</span>');
+      return '<li>' + cityName + ',  ' + stateName + '</li>';
+    }).sort().join('');
+    suggestions.innerHTML = html;
   }
 }
 
