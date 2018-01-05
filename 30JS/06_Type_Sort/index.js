@@ -12,29 +12,32 @@ if (FETCH) {
     .then(cities => typeSort(cities));
 }
 
+const findMatches = (word, cities) => cities.filter((place) => {
+  const regex = new RegExp(word, 'gi');
+  return place.city.match(regex) || place.state.match(regex);
+});
+
 function typeSort(cities) {
   const searchInput = document.querySelector('.search');
   const suggestions = document.querySelector('.suggestions');
+
   searchInput.addEventListener('change', showMatches); // 在游標離開，就是每 focus 一次跑一次 -> event
   searchInput.addEventListener('keyup', showMatches); // 每在 input 裡面按一個 keyPress 就會呼叫 -> keyBoardEvent
 
   function showMatches(event) {
-    // console.log(cities);
+    const isChange = event.type === 'change'; // 判斷是否為 change 事件（一次 focus）
     const search = this.value;
     const matchArray = findMatches(search, cities);
     const html = matchArray.map((place) => {
-      const regexp = new RegExp(search, 'gi');
-      const cityName = place.city.replace(regexp, `<span class="highlight">${search}</span>`)
-      const stateName = place.state.replace(regexp, `<span class="highlight">${search}</span>`)
-      return `<li>${cityName},  ${stateName}</li>`;
+      if (!isChange) {
+        const regexp = new RegExp(search, 'gi');
+        const cityName = place.city.replace(regexp, `<span class="highlight">${search}</span>`)
+        const stateName = place.state.replace(regexp, `<span class="highlight">${search}</span>`)
+        return `<li>${cityName},  ${stateName}</li>`;
+      }
+      return `<li>${place.city},  ${place.state}</li>`;
     }).sort().join('');
+
     suggestions.innerHTML = html;
   }
-}
-
-function findMatches(word, cities) {
-  return cities.filter((place) => {
-    const regex = new RegExp(word, 'gi');
-    return place.city.match(regex) || place.state.match(regex);
-  });
 }

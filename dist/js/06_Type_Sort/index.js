@@ -15,29 +15,34 @@ if (FETCH) {
   });
 }
 
-function typeSort(cities) {
-  var searchInput = document.querySelector('.search');
-  var suggestions = document.querySelector('.suggestions');
-  searchInput.addEventListener('change', showMatches); // 在游標離開，就是每 focus 一次跑一次 -> event
-  searchInput.addEventListener('keyup', showMatches); // 每在 input 裡面按一個 keyPress 就會呼叫 -> keyBoardEvent
-
-  function showMatches(event) {
-    // console.log(cities);
-    var search = this.value;
-    var matchArray = findMatches(search, cities);
-    var html = matchArray.map(function (place) {
-      var regexp = new RegExp(search, 'gi');
-      var cityName = place.city.replace(regexp, '<span class="highlight">' + search + '</span>');
-      var stateName = place.state.replace(regexp, '<span class="highlight">' + search + '</span>');
-      return '<li>' + cityName + ',  ' + stateName + '</li>';
-    }).sort().join('');
-    suggestions.innerHTML = html;
-  }
-}
-
-function findMatches(word, cities) {
+var findMatches = function findMatches(word, cities) {
   return cities.filter(function (place) {
     var regex = new RegExp(word, 'gi');
     return place.city.match(regex) || place.state.match(regex);
   });
+};
+
+function typeSort(cities) {
+  var searchInput = document.querySelector('.search');
+  var suggestions = document.querySelector('.suggestions');
+
+  searchInput.addEventListener('change', showMatches); // 在游標離開，就是每 focus 一次跑一次 -> event
+  searchInput.addEventListener('keyup', showMatches); // 每在 input 裡面按一個 keyPress 就會呼叫 -> keyBoardEvent
+
+  function showMatches(event) {
+    var isChange = event.type === 'change'; // 判斷是否為 change 事件（一次 focus）
+    var search = this.value;
+    var matchArray = findMatches(search, cities);
+    var html = matchArray.map(function (place) {
+      if (!isChange) {
+        var regexp = new RegExp(search, 'gi');
+        var cityName = place.city.replace(regexp, '<span class="highlight">' + search + '</span>');
+        var stateName = place.state.replace(regexp, '<span class="highlight">' + search + '</span>');
+        return '<li>' + cityName + ',  ' + stateName + '</li>';
+      }
+      return '<li>' + place.city + ',  ' + place.state + '</li>';
+    }).sort().join('');
+
+    suggestions.innerHTML = html;
+  }
 }
