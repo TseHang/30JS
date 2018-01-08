@@ -23,9 +23,6 @@ body {
     text-align: center;
 }
 
-img {
-    margin: 1em 0;
-    padding: var(--spacing);
-    background: var(--base);
-    filter: blur(var(--blur)) #{"grayscale(var(--grayscale))"};
+canvas {
+    border: solid 1px #333;
 }

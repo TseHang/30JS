@@ -2,8 +2,17 @@
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var canvas = document.querySelector('#draw');
 var DEFAULT_COLOR = 'hsl(60, 100%, 50%)';
+
+var controlColor = document.querySelector('#input-color');
+var controlLineWidth = document.querySelector('#input-line-width');
+var clearBtn = document.querySelector('#clear');
+var canvas = document.querySelector('#draw');
+var ctx = canvas.getContext('2d');
+
+var isRandomColor = true;
+var isRandomLine = true;
+
 var isDrawing = false;
 var lastX = 0;
 var lastY = 0;
@@ -15,19 +24,14 @@ var _parseHue = parseHue(DEFAULT_COLOR),
     saturation = _parseHue2[1],
     lightness = _parseHue2[2];
 
-// feature 小畫家！
-
-var initCanvas = function initCanvas(cs) {
-  var ctx = cs.getContext('2d');
-  cs.width = window.innerWidth;
-  cs.height = window.innerWidth;
+var initCanvas = function initCanvas() {
   ctx.strokeStyle = DEFAULT_COLOR; // 預設黃色
   ctx.lineJoin = 'round';
   ctx.lineCap = 'round';
   ctx.lineWidth = 1; // 線條寬度
 };
 
-initCanvas(canvas);
+initCanvas();
 
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mousedown', function (e) {
@@ -43,9 +47,23 @@ canvas.addEventListener('mouseout', function () {
   isDrawing = false;
 });
 
+controlColor.addEventListener('change', function () {
+  ctx.strokeStyle = this.value;
+  isRandomColor = false;
+});
+
+controlLineWidth.addEventListener('change', function () {
+  ctx.lineWidth = this.value;
+  isRandomLine = false;
+});
+
+clearBtn.addEventListener('click', function () {
+  return ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
 function draw(e) {
-  var ctx = this.getContext('2d');
   if (!isDrawing) return;
+
   ctx.beginPath();
   ctx.moveTo(lastX, lastY);
   ctx.lineTo(e.offsetX, e.offsetY);
@@ -56,21 +74,22 @@ function draw(e) {
   var _ref2 = [e.offsetX, e.offsetY];
   lastX = _ref2[0];
   lastY = _ref2[1];
-  hue += 1;
-  saturation += 1;
-  ctx.strokeStyle = 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
-  if (hue > 360) {
-    hue = 0;
+  if (isRandomColor) {
+    hue += 1;
+    ctx.strokeStyle = 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
+    if (hue > 360) {
+      hue = 0;
+    }
   }
-
-  if (direction) {
-    ctx.lineWidth += 1;
-  } else {
-    ctx.lineWidth -= 1;
-  }
-
-  if (ctx.lineWidth > 30 || ctx.lineWidth <= 1) {
-    direction = !direction;
+  if (isRandomLine) {
+    if (direction) {
+      ctx.lineWidth += 1;
+    } else {
+      ctx.lineWidth -= 1;
+    }
+    if (ctx.lineWidth > 30 || ctx.lineWidth <= 1) {
+      direction = !direction;
+    }
   }
 }
 
