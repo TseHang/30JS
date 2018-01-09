@@ -1,0 +1,54 @@
+body {
+  display: flex;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  color: #333;
+  font-family: PingFangSC-Regular, sans-serif;
+  background: #ffc600; }
+
+.player {
+  position: relative;
+  margin: auto auto;
+  max-width: 750px;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  font-size: 0;
+  overflow: hidden; }
+  .player:hover .player-control {
+    bottom: 0px; }
+
+.player-control {
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+  color: white;
+  background-color: rgba(51, 51, 51, 0.7);
+  padding: 5px 0;
+  transition: all .2s ease-in; }
+
+.progress {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  cursor: pointer; }
+  .progress-filled {
+    flex: 0;
+    height: 2px;
+    background-color: lightblue; }
+
+.player-button:focus {
+  outline: none; }
+
+button {
+  background-color: transparent;
+  border-radius: 5px;
+  color: white;
+  margin: 0px .5em; }
+
+label {
+  font-size: 12px;
+  margin: 0 1em;
+  letter-spacing: 1px; }
