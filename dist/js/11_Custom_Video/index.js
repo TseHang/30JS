@@ -7,9 +7,10 @@ var ranges = player.querySelectorAll('input[type="range"]');
 var skipButtons = player.querySelectorAll('[data-skip]');
 var progress = player.querySelector('.progress');
 var progressBar = player.querySelector('.progress-filled');
+var btnFullScreen = player.querySelector('.player-fullscreen');
 
 function togglePlay() {
-  var method = void 0;
+  var method = 'play';
   if (video.paused) {
     method = 'play';
     this.textContent = '❚❚';
@@ -18,6 +19,19 @@ function togglePlay() {
     this.textContent = '▶';
   }
   video[method]();
+}
+
+function fullScreen() {
+  // 會跑預設的 controls
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  } else if (video.mozRequestFullScreen) {
+    video.mozRequestFullScreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  }
 }
 
 function updateRange() {
@@ -35,8 +49,8 @@ function handleProgress() {
 }
 
 video.addEventListener('timeupdate', handleProgress); // progress
-
 btnPlay.addEventListener('click', togglePlay);
+btnFullScreen.addEventListener('click', fullScreen);
 ranges.forEach(function (range) {
   return range.addEventListener('change', updateRange);
 });
