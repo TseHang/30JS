@@ -19,10 +19,20 @@ h1 {
   /* offset-x | offset-y | blur-radius | color */
   text-shadow: 1px 1px 2px black; }
 
-.player {
-  width: 100%; }
-
 .photo {
   width: 100%;
   min-height: 300px;
   border: solid 2px #e69696; }
+
+.player {
+  width: 100%; }
+
+.strip {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap; }
+  .strip a {
+    width: 30%;
+    margin-right: 3%; }
+  .strip img {
+    width: 100%; }
