@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: PingFangSC-Regular, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: radial-gradient(lightgray 15%, transparent 16%) 0 0,
+  radial-gradient(lightgray 15%, transparent 16%) 8px 8px,
+  radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+  background-color: #ffc600;
+  background-size: 16px 16px;
+  background-attachment: fixed;
+}
+
+.menu {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  text-decoration: none;
+  margin:100px 0;
+}
+
+.menu a {
+  display: inline-block;
+  padding:5px;
+  margin:0 20px;
+  color:black;
+}
+
+.wrapper {
+  width: 20%;
+  margin: 0 auto;
+  color: white;
+  padding: 20px;
+  z-index: 0;
+}
+
+
+a {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 2px;
+  transition: all .2s ease-in;
+  &:-webkit-any-link {
+    color: white;
+  }
+}
+
+.highlight {
+  transition: transform .1s ease-in;
+  position: absolute;
+  background-color: lightblue;
+  color: gray;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  padding: 2px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: -1;
+  &:-webkit-any-link {
+    color: gray;
+  }
+}
