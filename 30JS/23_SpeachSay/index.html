@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html style=height:100%;width:100%;margin:0px;>
+
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <meta htt0-equiv=X-UA-Compatible content="IE=edge">
+  <title>Follow Your Mouse</title>
+  <link rel=stylesheet href=../../dist/css/23_SpeachSay/index.css>
+</head>
+
+<body>
+  <div class="wrapper">
+    <p class="pre-hold">I can hear you! ^_^</p>
+  </div>
+  <div class="block">
+    <button id="listen-start" class="btn-start">Start</button>
+    <button id="listen-stop" class="btn-stop">Stop</button>
+  </div>
+
+  <div class="wrapper">
+    <select name="voice" id="voices">
+      <option value="">Select A Voice</option>
+    </select>
+    <br>
+    <labe>Rate: </labe>
+    <input name="rate" type="range" min="0" max="3" value="1" step="0.2"/>
+    <br>
+    <textarea name="text" cols="40" rows="5" placeholder="Write the words you want to listen for!"></textarea>
+  </div>
+  <div class="block">
+    <button id="speak-start" class="btn-start">Start</button>
+    <button id="speak-stop" class="btn-stop">Stop</button>
+  </div>
+</body>
+<script type=text/javascript src=../../dist/js/23_SpeachSay/index.js></script>
+
+</html>

@@ -24,6 +24,7 @@ gulp.task('webserver', () => {
     .pipe(gulpWebServer({
       livereload: true,
       directoryListing: true,
+      open: true,
       // open: 'http://10.30.2.44:8000',
     }));
 });
