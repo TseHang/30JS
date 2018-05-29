@@ -1,0 +1,50 @@
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 0;
+  font-family: PingFangSC-Regular, sans-serif;
+  background:
+    linear-gradient(45deg, hsla(340, 100%, 55%, 1) 0%, hsla(340, 100%, 55%, 0) 70%),
+    linear-gradient(135deg, hsla(225, 95%, 50%, 1) 10%, hsla(225, 95%, 50%, 0) 80%),
+    linear-gradient(225deg, hsla(140, 90%, 50%, 1) 10%, hsla(140, 90%, 50%, 0) 80%),
+    linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+video {
+  box-shadow:0 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.wrapper {
+  display:flex;
+  width:850px;
+}
+
+.speed {
+  width: 7%;
+  overflow: hidden;
+  margin:10px 20px;
+  border-radius:50px;
+  background:#efefef;
+  box-shadow:0 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.speed-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  width:100%;
+  height:20%;
+  background:linear-gradient(-170deg, #2376ae 0%, #c16ecf 100%);
+  color:white;
+  text-shadow:1px 1px 0 rgba(0,0,0,0.2);
+}
