@@ -10,9 +10,8 @@ speedContainer.addEventListener('mousedown', handleDown);
 speedContainer.addEventListener('mousemove', handleMove);
 speedContainer.addEventListener('mouseup', handleUp);
 
-
-function handleDown(e) {
-  let percent = (e.pageY - this.offsetTop) / this.offsetHeight;
+function setRateAndHeight(e, $content) {
+  let percent = (e.pageY - $content.offsetTop) / $content.offsetHeight;
   let playRate = (percent * (max - min)) + min;
 
   if (playRate < 0.5) playRate = 0.5;
@@ -24,24 +23,17 @@ function handleDown(e) {
   bar.textContent = `${playRate.toFixed(2)}x`;
 
   video.playbackRate = playRate; // set rate
+}
+
+function handleDown(e) {
+  setRateAndHeight(e, this);
   isDown = true;
 }
 
 
 function handleMove(e) {
   if (isDown) {
-    let percent = (e.pageY - this.offsetTop) / this.offsetHeight;
-    let playRate = (percent * (max - min)) + min;
-
-    if (playRate < 0.5) playRate = 0.5;
-    if (percent < 0.1) percent = 0.1;
-
-    const height = `${Math.round(percent * 100)}%`;
-
-    bar.style.height = height;
-    bar.textContent = `${playRate.toFixed(2)}x`;
-
-    video.playbackRate = playRate; // set rate
+    setRateAndHeight(e, this);
   }
 }
 
