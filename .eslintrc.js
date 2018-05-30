@@ -13,5 +13,6 @@ module.exports = {
     "no-use-before-define": 0,
     "global-require": 1,
     "func-names": 0,
+    "prefer-destructuring": 0,
   }
 };
