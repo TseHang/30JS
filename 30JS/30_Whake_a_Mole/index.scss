@@ -1,0 +1,84 @@
+:root {
+  --master-height: 150px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 0;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: white;
+  background:
+    linear-gradient(45deg, rgba(254, 167, 16, 0.708) 0%, hsla(340, 100%, 55%, 0) 70%),
+    linear-gradient(135deg, rgba(233, 23, 72, 0.591) 40%, hsla(225, 95%, 50%, 0) 80%),
+    linear-gradient(315deg, rgba(95, 244, 31, 0.68) 100%, hsla(35, 95%, 55%, 0) 70%);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 650px;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border: solid 1px #fff;
+  padding: 1rem;
+}
+
+.btn {
+  position: relative;
+  cursor: pointer;
+  margin: 1rem 15%;
+  padding: .5rem;
+  border: solid 1px #fff;
+  transition: all .1s ease-in;
+
+  &:hover {
+    border-color: rgb(233, 23, 72);
+    background-color: rgb(233, 23, 72);
+  }
+}
+
+.monster {
+  cursor: pointer;
+  position: relative;
+  width: 30%;
+  height: calc(var(--master-height) + 20px);
+  margin-top: 1rem;
+  overflow: hidden;
+
+  .gopher {
+    position: absolute;
+    height: var(--master-height);
+    top: 100%;
+    transition: all .2s ease-in;
+
+    &.up {
+      top:0;
+    }
+  }
+
+  .hole {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+}
