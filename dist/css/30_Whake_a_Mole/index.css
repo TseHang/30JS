@@ -63,3 +63,6 @@ img {
     position: absolute;
     width: 100%;
     bottom: 0; }
+
+.score {
+  text-align: center; }
